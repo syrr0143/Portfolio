@@ -1,6 +1,12 @@
 /*=============== SHOW MENU ===============*/
 // Constantes des éléments du menu de navigation. 
-const contactSubmitButton = document.getElementById('contact-submit');
+const SERVICE_EMAILJS = localStorage.getItem('SERVICE_EMAILJS');
+const TEMPLATE_ID = localStorage.getItem('TEMPLATE_ID');
+const PUBLIC_KEY = localStorage.getItem('PUBLIC_KEY');
+
+// Use apiKey and secretToken in your code
+console.log(SERVICE_EMAILJS, TEMPLATE_ID, PUBLIC_KEY);
+const submitbutton = document.getElementById('contact-submit');
 const navMenu = document.getElementById('nav-menu'),
     navToggle = document.getElementById('nav-toggle'),
     navClose = document.getElementById('nav-close')
@@ -79,7 +85,7 @@ const sendEmail = (e) => {
     contactSubmitButton.disabled = true;
 
 
-    emailjs.sendForm('service_mwkeus4', 'template_fcz7dh1', '#contact-form', '7PVS1hz0DZW25RU4y')
+    emailjs.sendForm(SERVICE_EMAILJS, TEMPLATE_ID, '#contact-form', PUBLIC_KEY)
         .then(() => {
             contactMessage.textContent = 'Message sent successfully ✅';
 
